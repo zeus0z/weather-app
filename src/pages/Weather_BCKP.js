@@ -8,7 +8,12 @@ const Weather = () => {
 
   const [LONGITUDE, setLongitude] = useState();
   const [LATITUDE, setLatitude] = useState();
-  const [METEOROLOGIC_DATA, setMetData] = useState();
+  const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
+  const [TEMPERATURE_UNIT, setTemperatureUnit] = useState('celsius');
+  const [DAILY_DATA, setDailyData] = useState();
+
+  
+
 
 
   const getLatitudeAndLongitude = () => {
@@ -27,15 +32,17 @@ const Weather = () => {
 
       await getLatitudeAndLongitude();
 
-      let URL=`https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=America%2FSao_Paulo`
+      let URL=`https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&daily=temperature_2m_max,temperature_2m_min,weathercode,apparent_temperature_max,apparent_temperature_min,windspeed_10m_max&current_weather=true&timezone=America%2FSao_Paulo`
       
       const result = await axios(URL);
 
-      setMetData(result.data);
+      setMeteorologicData(result.data);
+      setDailyData(METEOROLOGIC_DATA.daily);
+      console.log(DAILY_DATA);
       console.log("Use Effect Realizado");
     };
     fetchApi();
-  },[LATITUDE])
+  },[LATITUDE, LONGITUDE])
 
 
   return (
