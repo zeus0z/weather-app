@@ -27,7 +27,7 @@ const Weather = () => {
 
       await getLatitudeAndLongitude();
 
-      let URL=`https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&hourly=temperature_2m,apparent_temperature,rain&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=America%2FSao_Paulo`
+      let URL=`https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=America%2FSao_Paulo`
       
       const result = await axios(URL);
 
