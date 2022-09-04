@@ -64,7 +64,7 @@ const WeatherCodeParse = ({code}) => {
             break;
 
         default:
-            alert(code);
+            console.log('Código invalido');
 
 
     }
