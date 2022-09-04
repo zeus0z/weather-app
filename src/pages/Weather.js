@@ -12,8 +12,8 @@ const Weather = () => {
   const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
   const [TEMPERATURE_UNIT, setTemperatureUnit] = useState('celsius');
   const [CURRENT_TEMPERATURE, setCurrentTemp] = useState();
-  const [CURRENT_MAX_TEMP,setCurrentMaxTemp] = useState();
-  const [CURRENT_MIN_TEMP,setCurrentMinTemp] = useState();
+  const [CURRENT_MAX_TEMP, setCurrentMaxTemp] = useState();
+  const [CURRENT_MIN_TEMP, setCurrentMinTemp] = useState();
   const [CURRENT_WEATHER_CODE, setCurrentWeatherCode] = useState();
 
 
@@ -31,10 +31,10 @@ const Weather = () => {
     })
   }
 
-  
+
   const fetchApi = async () => {
 
-    getLatitudeAndLongitude();
+    await getLatitudeAndLongitude();
 
     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&timezone=America%2FSao_Paulo`
     // URL provida pelo site, sem meus template literals:
@@ -47,25 +47,25 @@ const Weather = () => {
     setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
     setCurrentWeatherCode(result.data.current_weather.weathercode);
 
-    
+
     console.log("Use Effect Realizado");
   }
 
 
-  useEffect(()=>{fetchApi()},[LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
+  useEffect(() => { fetchApi() }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
+
+  
 
 
 
 
   return (
     <>
-    
-
-      <CurrentDayWeather 
-      temp={CURRENT_TEMPERATURE} 
-      max={CURRENT_MAX_TEMP} 
-      min={CURRENT_MIN_TEMP} 
-      weatherCode={CURRENT_WEATHER_CODE}/>
+      <CurrentDayWeather
+        temp={CURRENT_TEMPERATURE}
+        max={CURRENT_MAX_TEMP}
+        min={CURRENT_MIN_TEMP}
+        weatherCode={CURRENT_WEATHER_CODE} />
 
     </>
   )
