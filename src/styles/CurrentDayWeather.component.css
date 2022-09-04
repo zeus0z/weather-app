@@ -1,0 +1,66 @@
+.current_day_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--light);
+    color: var(--darker);
+    padding: 1rem;
+    border-radius: 0.4rem;
+    position: relative;
+    top: 4rem;
+    margin: 0 1rem;
+    box-shadow: 5px 5px 10px 1px var(--darker);
+}
+
+.card_body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather_condition {
+    display: flex;
+    flex-direction: column;
+   
+    font-weight: bold;
+    align-items: center;
+
+}
+
+.weather_condition img {
+    margin-bottom: 1rem;
+
+}
+
+.card_header {
+    text-align: left;
+}
+
+.temps {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.current_temp {
+    font-size: 3rem;
+    text-shadow: 3px 3px 5px var(--dark);
+    margin: 0.3rem 0;
+}
+
+.max_temp {
+    color: var(--orange);
+}
+
+.min_temp {
+    color: var(--blue);
+}
+
+.data_exata {
+    color: var(--dark);
+}
+
+.cidade_estado {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

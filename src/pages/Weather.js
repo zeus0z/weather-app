@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import CurrentDayWeather from '../components/CurrentDayWeather';
 
 const Weather = () => {
 
@@ -10,7 +11,11 @@ const Weather = () => {
   const [LATITUDE, setLatitude] = useState();
   const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
   const [TEMPERATURE_UNIT, setTemperatureUnit] = useState('celsius');
-  const [DAILY_DATA, setDailyData] = useState();
+  const [CURRENT_TEMPERATURE, setCurrentTemp] = useState();
+  const [CURRENT_MAX_TEMP,setCurrentMaxTemp] = useState();
+  const [CURRENT_MIN_TEMP,setCurrentMinTemp] = useState();
+  const [CURRENT_WEATHER_CODE, setCurrentWeatherCode] = useState();
+
 
 
 
@@ -23,26 +28,10 @@ const Weather = () => {
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
       console.log("LOCALIZAÇÃO OBTIDA");
-
-
-      // setLatitude(JSON.stringify(position.coords.latitude));
-      // setLongitude(JSON.stringify(position.coords.longitude));
-      // console.log("LOCALIZAÇÃO OBTIDA");
-
-
     })
   }
 
-  /*
-  ${LATITUDE}
-  ${LONGITUDE}
-  ${TEMPERATURE_UNIT}
   
-  
-  */
-
-
-
   const fetchApi = async () => {
 
     getLatitudeAndLongitude();
@@ -53,33 +42,30 @@ const Weather = () => {
     const result = await axios(URL);
 
     setMeteorologicData(result.data);
+    setCurrentTemp(result.data.current_weather.temperature);
+    setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
+    setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
+    setCurrentWeatherCode(result.data.current_weather.weathercode);
 
-    console.log(DAILY_DATA);
+    
     console.log("Use Effect Realizado");
   }
 
 
+  useEffect(()=>{fetchApi()},[LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
 
-  useEffect(() => { fetchApi() }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
 
-  const log = () => {
-    console.log(LATITUDE);
-    console.log(typeof (LATITUDE));
-  }
 
 
   return (
     <>
+    
 
-      <button onClick={log}> LOG </button>
-      <button onClick={fetchApi}> Fetch Api </button>
-      <br />
-      <h2>Latitude:</h2> {LATITUDE && <p>{LATITUDE}</p>}
-      <br />
-      <h2>Longitude:</h2>{LONGITUDE && <p>{LONGITUDE}</p>}
-      <br />
-
-      <h2> Temperatura:</h2> {METEOROLOGIC_DATA && <p>{METEOROLOGIC_DATA.current_weather.temperature}</p>}
+      <CurrentDayWeather 
+      temp={CURRENT_TEMPERATURE} 
+      max={CURRENT_MAX_TEMP} 
+      min={CURRENT_MIN_TEMP} 
+      weatherCode={CURRENT_WEATHER_CODE}/>
 
     </>
   )
