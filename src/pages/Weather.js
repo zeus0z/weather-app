@@ -4,7 +4,7 @@ import CurrentDayWeather from '../components/CurrentDayWeather';
 
 const Weather = () => {
 
-  // const [IS_LOADING, setLoading] = useState(true);
+  const [IS_LOADING, setLoading] = useState(true);
   // const [ERROR, setError] = useState(false);
 
   const [LONGITUDE, setLongitude] = useState();
@@ -46,29 +46,37 @@ const Weather = () => {
     setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
     setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
     setCurrentWeatherCode(result.data.current_weather.weathercode);
+    setLoading(false);
 
 
     console.log("Use Effect Realizado");
   }
 
 
-  useEffect(() => { fetchApi() }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
-
-  
-
-
+  useEffect(() => {
+    fetchApi()
+  }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
 
 
-  return (
-    <>
-      <CurrentDayWeather
-        temp={CURRENT_TEMPERATURE}
-        max={CURRENT_MAX_TEMP}
-        min={CURRENT_MIN_TEMP}
-        weatherCode={CURRENT_WEATHER_CODE} />
 
-    </>
-  )
+
+  if (IS_LOADING) {
+    return <div className='loading'>LOADING WEATHER...
+    </div>
+  } else
+
+    return (
+      <>
+        <CurrentDayWeather
+          temp={CURRENT_TEMPERATURE}
+          max={CURRENT_MAX_TEMP}
+          min={CURRENT_MIN_TEMP}
+          weatherCode={CURRENT_WEATHER_CODE} />
+
+      </>
+    )
 }
+
+
 
 export default Weather
