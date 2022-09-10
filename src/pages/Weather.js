@@ -16,6 +16,10 @@ const Weather = () => {
   const [CURRENT_MAX_TEMP, setCurrentMaxTemp] = useState();
   const [CURRENT_MIN_TEMP, setCurrentMinTemp] = useState();
   const [CURRENT_WEATHER_CODE, setCurrentWeatherCode] = useState();
+  const [NEXT_DAYS, setNextDays] = useState();
+  const [NEXT_DAYS_WEATHER_CODES, setNextDaysWeatherCodes] = useState();
+  const [NEXT_DAYS_MAX_TEMPS, setNextDaysMaxTemps] = useState();
+  const [NEXT_DAYS_MIN_TEMPS, setNextDaysMinTemps] = useState();
 
 
 
@@ -47,6 +51,13 @@ const Weather = () => {
     setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
     setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
     setCurrentWeatherCode(result.data.current_weather.weathercode);
+    setNextDays(result.data.daily.time);
+    setNextDaysWeatherCodes(result.data.daily.weathercode);
+    setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
+    setNextDaysMinTemps(result.data.daily.temperature_2m_min);
+
+
+
     setLoading(false);
 
 
@@ -67,16 +78,21 @@ const Weather = () => {
 
     return (
       <>
-       <NextDaysForecast />
+
+
         <CurrentDayWeather
           temp={CURRENT_TEMPERATURE}
           max={CURRENT_MAX_TEMP}
           min={CURRENT_MIN_TEMP}
           weatherCode={CURRENT_WEATHER_CODE} />
 
-        
-         
-        
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+
+
       </>
 
 
