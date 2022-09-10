@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/CurrentDayWeather.component.css"
+import "../styles/WeatherCards.component.css"
 import WeatherCodeParse from './WeatherCodeParse'
 
 const CurrentDayWeather = ({temp,max,min,weatherCode}) => {

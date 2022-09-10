@@ -6,21 +6,24 @@ const WeatherCodeParse = ({code}) => {
 
     switch (code) {
         case 0:
-            return("Clear sky");
+            return("Céus Limpos");
             break;
 
         case 1 :
-            return('Mainly clear')
+            return('Predominantemente Limpo')
             break;
         case 2 :
             return('Parcialmente Nublado')
             break;
         case 3:
-            return('overcast')
+            return('Nublado')
             break;
 
-        case 45 || 48:
-            return('Fog and depositing rime fog');
+        case 45:
+            return('Névoa');
+            break;
+        case 48:
+            return('depositing rime fog');
             break;
 
         case 51 || 53 || 55:

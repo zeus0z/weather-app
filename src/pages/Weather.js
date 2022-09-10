@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import CurrentDayWeather from '../components/CurrentDayWeather';
+import NextDaysForecast from '../components/NextDaysForecast';
 
 const Weather = () => {
 
@@ -61,19 +62,24 @@ const Weather = () => {
 
 
   if (IS_LOADING) {
-    return <div className='loading'>LOADING WEATHER...
-    </div>
+    return <div className='loading'>LOADING WEATHER...</div>
   } else
 
     return (
       <>
+       <NextDaysForecast />
         <CurrentDayWeather
           temp={CURRENT_TEMPERATURE}
           max={CURRENT_MAX_TEMP}
           min={CURRENT_MIN_TEMP}
           weatherCode={CURRENT_WEATHER_CODE} />
 
+        
+         
+        
       </>
+
+
     )
 }
 
