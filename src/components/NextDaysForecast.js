@@ -25,9 +25,9 @@ const NextDaysForecast = ({day,weatherCode, min, max }) => {
                     </div>
                 </div>
 
-                <div className="weather_condition">
-                    <span><WeatherCodeParse code={weatherCode} /></span>
-                    <img width='50px' src="https://cdn-icons-png.flaticon.com/512/116/116251.png" alt="" />
+                <div className="next_days_weather_condition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/116/116251.png" alt="weather_icon" />
+                    <span className="parsed_weather_code"><WeatherCodeParse code={weatherCode} /></span>
                 </div>
 
             </div>
