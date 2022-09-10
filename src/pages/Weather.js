@@ -91,6 +91,36 @@ const Weather = () => {
           weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
           max={NEXT_DAYS_MAX_TEMPS[0]}
           min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
+        <NextDaysForecast
+          day={NEXT_DAYS[0]}
+          weatherCode={NEXT_DAYS_WEATHER_CODES[0]}
+          max={NEXT_DAYS_MAX_TEMPS[0]}
+          min={NEXT_DAYS_MIN_TEMPS[0]} />
 
 
       </>

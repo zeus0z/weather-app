@@ -24,10 +24,10 @@ const CurrentDayWeather = ({temp,max,min,weatherCode}) => {
                 <div className="card_body">
 
                     <div className="temps">
-                        <div className="current_temp">{temp}</div>
+                        <div className="current_temp">{temp}º</div>
                         <div className="max_min_temps">
-                            <span className='max_temp'>Máxima: {max} </span><br />
-                            <span className='min_temp'> Mínima: {min}</span>
+                            <span className='max_temp'>Máxima: {max}º </span><br />
+                            <span className='min_temp'> Mínima: {min}º</span>
                         </div>
                     </div>
                 </div>
