@@ -1,18 +1,21 @@
+import { useState } from "react"
 import "../styles/WeatherCards.component.css"
 import WeatherCodeParse from "./WeatherCodeParse"
 
 
-const NextDaysForecast = ({day,weatherCode, min, max }) => {
+const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
+
+    const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+   
+
 
     
-
-
     return (
         <>
             <div className="next_days_cards">
 
                 <div className="date">
-                    <span className="weekDay">DAY <br /> </span>
+                    <span className="weekDay">{WEEKDAYS[weekDayNumber]}  <br /> </span>
                     <span className="monthDay">{day}</span>
                 </div>
 
@@ -27,7 +30,8 @@ const NextDaysForecast = ({day,weatherCode, min, max }) => {
 
                 <div className="next_days_weather_condition">
                     <img src="https://cdn-icons-png.flaticon.com/512/116/116251.png" alt="weather_icon" />
-                    <span className="parsed_weather_code"><WeatherCodeParse code={weatherCode} /></span>
+                    
+                    <span className="parsed_weather_code"><WeatherCodeParse code={weatherCode} /></span> 
                 </div>
 
             </div>

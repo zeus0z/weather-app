@@ -3,6 +3,19 @@ import axios from 'axios';
 import CurrentDayWeather from '../components/CurrentDayWeather';
 import NextDaysForecast from '../components/NextDaysForecast';
 
+
+/*  TO-DO
+
+
+
+NextDaysForecast: centralizar o min-max até onde der sem atrapalhar o WeatherCode
+
+
+
+
+*/
+
+
 const Weather = () => {
 
   const [IS_LOADING, setLoading] = useState(true);
@@ -22,9 +35,16 @@ const Weather = () => {
   const [NEXT_DAYS_MIN_TEMPS, setNextDaysMinTemps] = useState();
 
 
-
-
-
+  const date = new Date();
+  const WEEK_DAY_NUMBER = date.getDay();
+  const WEEK_DAY_NUMBER_LIST = [
+    (WEEK_DAY_NUMBER + 1),
+    (WEEK_DAY_NUMBER + 2),
+    (WEEK_DAY_NUMBER + 3),
+    (WEEK_DAY_NUMBER + 4),
+    (WEEK_DAY_NUMBER + 5),
+    (WEEK_DAY_NUMBER + 6)
+  ];
 
   const getLatitudeAndLongitude = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -78,25 +98,21 @@ const Weather = () => {
 
     return (
       <>
-
-
         <CurrentDayWeather
           temp={CURRENT_TEMPERATURE}
           max={CURRENT_MAX_TEMP}
           min={CURRENT_MIN_TEMP}
           weatherCode={CURRENT_WEATHER_CODE} />
 
-        {NEXT_DAYS.map(((item,index) => (
+        {NEXT_DAYS.map(((item, index) => (
           <NextDaysForecast
-            day={NEXT_DAYS[index].slice(5)}
+            key={index}
+            weekDayNumber={WEEK_DAY_NUMBER_LIST[index]}
+            day={NEXT_DAYS[index]}
             weatherCode={NEXT_DAYS_WEATHER_CODES[index]}
             max={NEXT_DAYS_MAX_TEMPS[index]}
             min={NEXT_DAYS_MIN_TEMPS[index]} />
         )))}
-
-
-
-
       </>
 
 
