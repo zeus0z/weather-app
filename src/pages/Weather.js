@@ -6,11 +6,15 @@ import NextDaysForecast from '../components/NextDaysForecast';
 
 /*  TO-DO
 
+Traduzir os tipos de clima
+Adicionar ícones para cada clima
+Fazer com que a propriedade src das imagens mude de acordo com o weather code
+
+ADicionar opção para trocar para Fahrenheit
+
 
 
 NextDaysForecast: centralizar o min-max até onde der sem atrapalhar o WeatherCode
-
-
 
 
 */
