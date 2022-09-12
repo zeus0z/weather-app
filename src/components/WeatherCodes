@@ -11,3 +11,25 @@
 85, 86	Snow showers slight and heavy
 95 *	Thunderstorm: Slight or moderate
 96, 99 *	Thunderstorm with slight and heavy hail
+
+
+icons
+
+cloud
+<FontAwesomeIcon icon="fa-solid fa-cloud" />
+
+<FontAwesomeIcon icon="fa-solid fa-cloud-rain" />
+
+<FontAwesomeIcon icon="fa-solid fa-cloud-bolt" />
+
+<FontAwesomeIcon icon="fa-solid fa-cloud-sun-rain" />
+
+<FontAwesomeIcon icon="fa-solid fa-cloud-showers-heavy" />
+
+<FontAwesomeIcon icon="fa-solid fa-sun" />
+
+<FontAwesomeIcon icon="fa-solid fa-snowflake" />
+
+<FontAwesomeIcon icon="fa-solid fa-cloud-bolt" />
+
+<FontAwesomeIcon icon="fa-solid fa-smog" />
