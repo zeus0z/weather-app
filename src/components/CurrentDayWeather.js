@@ -1,6 +1,11 @@
 import React from 'react'
 import "../styles/WeatherCards.component.css"
 import WeatherCodeParse from './WeatherCodeParse'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCloud } from '@fortawesome/free-solid-svg-icons'
+
+const element = <FontAwesomeIcon icon={faCloud} size='4x'/>
+
 
 
 const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
@@ -11,9 +16,7 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
     let m = months[date.getMonth()];
     let a = date.getFullYear();
 
-    const WEEKDAYS = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
-    let CURRENT_WEEKDAY = WEEKDAYS[date.getDay()];
-
+    
 
 
     return (
@@ -22,7 +25,7 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
             <div className="weather_text_info">
                 <div className="card_header">
                     <div className="cidade_estado">Vitória da Conquista, BA</div>
-                    <div className="data_exata"> {CURRENT_WEEKDAY}, {d} de {m} de {a}</div>
+                    <div className="data_exata">, {d} de {m} de {a}</div>
                 </div>
 
                 <div className="card_body">
@@ -38,7 +41,8 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
             </div>
 
             <div className="weather_condition">
-                <img width="85px" src="https://cdn-icons-png.flaticon.com/512/116/116251.png" alt="" />
+            {element}
+            
                 <span><WeatherCodeParse code={weatherCode} /></span>
             </div>
 
