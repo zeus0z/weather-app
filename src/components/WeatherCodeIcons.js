@@ -1,74 +1,78 @@
 
 
+const WeatherCodeIcons = () => {
+  
+    
+
 const WeatherCodeParse = ({ code }) => {
 
 
 
     switch (code) {
         case 0:
-            return ("Céus Limpos");
+            // return ("Céus Limpos");
             break;
 
         case 1:
-            return ('Predominantemente Limpo')
+            // return ('Predominantemente Limpo')
             break;
         case 2:
-            return ('Parcialmente Nublado')
+            // return ('Parcialmente Nublado')
             break;
         case 3:
-            return ('Nublado')
+            // return ('Nublado')
             break;
 
         case 45:
         case 48:
-            return ('Névoa');
+            // return ('Névoa');
             break;
 
         case 51:
         case 53:
         case 55:
-            return ('Garoa');
+            // return ('Garoa');
             break;
 
         case 56:
         case 57:
-            return ('Garoa Gelada');
+            // return ('Garoa Gelada');
             break;
 
 
         case 61:
         case 63:
         case 65:
-            return ('Chuva');
+            // return ('Chuva');
             break;
 
         case 66:
         case 67:
-            return ('Chuva Gelada');
+            // return ('Chuva Gelada');
             break;
 
         case 71:
         case 73:
         case 75:
         case 77:
-            return ('Neve');
+            // return ('Neve');
             break;
 
         case 80:
         case 81:
         case 82:
-            return ('Pancadas de Chuva');
+            // return ('Pancadas de Chuva');
             break;
 
         case 85:
         case 86:
-            return ('Nevasca');
+            // return ('Nevasca');
             break;
 
         case 95:
         case 96:
         case 99:
-            return ('Tempestade de raios');
+            // return ('Tempestade de raios');
             break;
 
         default:
@@ -76,4 +80,8 @@ const WeatherCodeParse = ({ code }) => {
     }
 }
 
-export default WeatherCodeParse
+
+
+}
+
+export default WeatherCodeIcons
