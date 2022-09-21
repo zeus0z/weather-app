@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "../styles/WeatherCards.component.css"
 import WeatherCodeParse from "./WeatherCodeParse"
+import WeatherCodeIcons from "./WeatherCodeIcons"
 
 
 const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
@@ -29,7 +30,7 @@ const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
                 </div>
 
                 <div className="next_days_weather_condition">
-                    <img src="https://cdn-icons-png.flaticon.com/512/116/116251.png" alt="weather_icon" />
+                <WeatherCodeIcons code={weatherCode}/>
                     
                     <span className="parsed_weather_code"><WeatherCodeParse code={weatherCode} /></span> 
                 </div>

@@ -1,10 +1,8 @@
 import React from 'react'
 import "../styles/WeatherCards.component.css"
+import WeatherCodeIcons from './WeatherCodeIcons';
 import WeatherCodeParse from './WeatherCodeParse'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloud } from '@fortawesome/free-solid-svg-icons'
 
-const element = <FontAwesomeIcon icon={faCloud} size='4x'/>
 
 
 
@@ -41,7 +39,7 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
             </div>
 
             <div className="weather_condition">
-            {element}
+            <WeatherCodeIcons code={weatherCode}/>
             
                 <span><WeatherCodeParse code={weatherCode} /></span>
             </div>
