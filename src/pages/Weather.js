@@ -65,9 +65,9 @@ const Weather = () => {
 
     await getLatitudeAndLongitude();
 
-    let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&timezone=America%2FSao_Paulo`
+    //let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&timezone=America%2FSao_Paulo`
     // URL provida pelo site, sem meus template literals:
-    // let URL ='https://api.open-meteo.com/v1/forecast?latitude=-14.89&longitude=-40.85&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo';
+     let URL ='https://api.open-meteo.com/v1/forecast?latitude=-14.89&longitude=-40.85&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo';
     const result = await axios(URL);
 
     setMeteorologicData(result.data);
@@ -97,7 +97,7 @@ const Weather = () => {
 
 
   if (IS_LOADING) {
-    return <div className='loading'>LOADING WEATHER...</div>
+    return <div className='loading'>LOADING teste...</div>
   } else
 
     return (
