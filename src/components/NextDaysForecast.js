@@ -6,10 +6,10 @@ import WeatherCodeIcons from "./WeatherCodeIcons"
 
 const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
 
-    const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+    const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado","Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
    
 
-
+    
     
     return (
         <>

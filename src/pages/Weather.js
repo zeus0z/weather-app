@@ -41,8 +41,8 @@ const Weather = () => {
 
   const date = new Date();
   const WEEK_DAY_NUMBER = date.getDay();
-  const WEEK_DAY_NUMBER_LIST = [
-    (WEEK_DAY_NUMBER + 1),
+  const NEXT_DAYS_NUMBERS = [
+        (WEEK_DAY_NUMBER + 1),
     (WEEK_DAY_NUMBER + 2),
     (WEEK_DAY_NUMBER + 3),
     (WEEK_DAY_NUMBER + 4),
@@ -61,13 +61,19 @@ const Weather = () => {
   }
 
 
+  //test
+  console.log(WEEK_DAY_NUMBER);
+  //----------
+
+
+
   const fetchApi = async () => {
 
     await getLatitudeAndLongitude();
 
     //let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&timezone=America%2FSao_Paulo`
     // URL provida pelo site, sem meus template literals:
-     let URL ='https://api.open-meteo.com/v1/forecast?latitude=-14.89&longitude=-40.85&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo';
+    let URL = 'https://api.open-meteo.com/v1/forecast?latitude=-14.89&longitude=-40.85&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo';
     const result = await axios(URL);
 
     setMeteorologicData(result.data);
@@ -108,10 +114,10 @@ const Weather = () => {
           min={CURRENT_MIN_TEMP}
           weatherCode={CURRENT_WEATHER_CODE} />
 
-        {NEXT_DAYS.map(((item, index) => (
+        {NEXT_DAYS_NUMBERS.map(((item, index) => (
           <NextDaysForecast
             key={index}
-            weekDayNumber={WEEK_DAY_NUMBER_LIST[index]}
+            weekDayNumber={NEXT_DAYS_NUMBERS[index]}
             day={NEXT_DAYS[index]}
             weatherCode={NEXT_DAYS_WEATHER_CODES[index]}
             max={NEXT_DAYS_MAX_TEMPS[index]}
