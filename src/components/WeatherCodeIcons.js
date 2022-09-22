@@ -1,7 +1,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-//Icons Import
+//Importing Icons
 
 
 import { faCloud } from '@fortawesome/free-solid-svg-icons'
@@ -15,20 +15,22 @@ import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
 import { faCloudShowersWater } from '@fortawesome/free-solid-svg-icons'
 
 
-//Assign Icons to constants
-const cloud = <FontAwesomeIcon icon={faCloud} size='3x' />;
-const bolt = <FontAwesomeIcon icon={faCloudBolt} size='3x' />;
-const sun = <FontAwesomeIcon icon={faSun} size='3x' />;
-const smog = <FontAwesomeIcon icon={faSmog} size='3x' />;
-const cloudRain = <FontAwesomeIcon icon={faCloudRain} size='3x' />;
-const rain = <FontAwesomeIcon icon={faCloudShowersHeavy} size='3x' />;
-const cloudSun = <FontAwesomeIcon icon={faCloudSun} size='3x' />;
-const snow = <FontAwesomeIcon icon={faSnowflake} size='3x' />;
-const showers = <FontAwesomeIcon icon={faCloudShowersWater} size='3x' />;
 
 
 
-const WeatherCodeIcons = ({ code }) => {
+
+const WeatherCodeIcons = ({ code, iconSize }) => {
+
+    //Assigning Icons to constants
+const cloud = <FontAwesomeIcon icon={faCloud} size={iconSize} />;
+const bolt = <FontAwesomeIcon icon={faCloudBolt} size={iconSize} />;
+const sun = <FontAwesomeIcon icon={faSun} size={iconSize} />;
+const smog = <FontAwesomeIcon icon={faSmog} size={iconSize} />;
+const cloudRain = <FontAwesomeIcon icon={faCloudRain} size={iconSize} />;
+const rain = <FontAwesomeIcon icon={faCloudShowersHeavy} size={iconSize} />;
+const cloudSun = <FontAwesomeIcon icon={faCloudSun} size={iconSize} />;
+const snow = <FontAwesomeIcon icon={faSnowflake} size={iconSize} />;
+const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
 
 
     switch (code) {
@@ -56,7 +58,7 @@ const WeatherCodeIcons = ({ code }) => {
         case 56:
         case 57:
 
-            //aqui é garoa
+          
             return cloudRain
             break;
 
@@ -65,7 +67,7 @@ const WeatherCodeIcons = ({ code }) => {
         case 65:
         case 66:
         case 67:
-            // aqui é chuva
+      
             return rain;
             break;
 

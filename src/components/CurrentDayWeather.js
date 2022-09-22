@@ -39,7 +39,7 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
             </div>
 
             <div className="weather_condition">
-            <WeatherCodeIcons code={weatherCode}/>
+            <WeatherCodeIcons code={weatherCode} iconSize={'5x'}/>
             
                 <span><WeatherCodeParse code={weatherCode} /></span>
             </div>

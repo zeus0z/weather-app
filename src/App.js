@@ -5,7 +5,7 @@ import Weather from './pages/Weather';
 function App() {
   return (
     <div className="App">
-      <WeatherCodeIcons code={0}/>
+      <Weather/>
     </div>
   );
 }

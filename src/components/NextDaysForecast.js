@@ -30,7 +30,7 @@ const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
                 </div>
 
                 <div className="next_days_weather_condition">
-                <WeatherCodeIcons code={weatherCode}/>
+                <WeatherCodeIcons code={weatherCode} iconSize={'2x'}/>
                     
                     <span className="parsed_weather_code"><WeatherCodeParse code={weatherCode} /></span> 
                 </div>
