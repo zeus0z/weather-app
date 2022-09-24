@@ -27,6 +27,7 @@ const Weather = () => {
 
   const [LONGITUDE, setLongitude] = useState();
   const [LATITUDE, setLatitude] = useState();
+  const [EXACT_LOCATION,setExactLocation] =useState('Impossível obter localização');
   const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
   const [TEMPERATURE_UNIT, setTemperatureUnit] = useState('celsius');
   const [CURRENT_TEMPERATURE, setCurrentTemp] = useState();
@@ -67,6 +68,8 @@ const Weather = () => {
 
 
 
+
+
   const fetchApi = async () => {
 
     await getLatitudeAndLongitude();
@@ -86,7 +89,9 @@ const Weather = () => {
     setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
     setNextDaysMinTemps(result.data.daily.temperature_2m_min);
 
-
+    const GOOGLE_API_DATA = await axios('https://maps.googleapis.com/maps/api/geocode/json?latlng=-14.89,-40.85&result_type=administrative_area_level_2|administrative_area_level_1&key=AIzaSyDNS9i0ANU7BCFOwpBQ01E96PfI3ObZTdU');
+    setExactLocation(GOOGLE_API_DATA.data.results[0].formatted_address);
+    console.log(GOOGLE_API_DATA.data.results[0].formatted_address);
 
     setLoading(false);
 
@@ -109,10 +114,12 @@ const Weather = () => {
     return (
       <>
         <CurrentDayWeather
+        location={EXACT_LOCATION}
           temp={CURRENT_TEMPERATURE}
           max={CURRENT_MAX_TEMP}
           min={CURRENT_MIN_TEMP}
-          weatherCode={CURRENT_WEATHER_CODE} />
+          weatherCode={CURRENT_WEATHER_CODE} 
+          weekDayNumber={WEEK_DAY_NUMBER}/>
 
         {NEXT_DAYS_NUMBERS.map(((item, index) => (
           <NextDaysForecast

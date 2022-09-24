@@ -6,13 +6,16 @@ import WeatherCodeParse from './WeatherCodeParse'
 
 
 
-const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
+const CurrentDayWeather = ({weekDayNumber, location, temp, max, min, weatherCode }) => {
 
     let date = new Date();
     let d = date.getDate();
     let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
     let m = months[date.getMonth()];
     let a = date.getFullYear();
+
+    const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado","Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+
 
     
 
@@ -22,8 +25,8 @@ const CurrentDayWeather = ({ temp, max, min, weatherCode }) => {
 
             <div className="weather_text_info">
                 <div className="card_header">
-                    <div className="cidade_estado">Vitória da Conquista, BA</div>
-                    <div className="data_exata">, {d} de {m} de {a}</div>
+                    <div className="cidade_estado">{location}</div>
+                    <div className="data_exata">{WEEKDAYS[weekDayNumber]}, {d} de {m} de {a}</div>
                 </div>
 
                 <div className="card_body">
