@@ -8,21 +8,36 @@
 }
 
 body {
-  background-color: blue;
+  background-color: red;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  max-height: 100vh;
   
 
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  
+
+
+
   text-align: center;
   background-color: var(--darkest);
   color: var(--light);
   font-family: sans-serif;
-  height: 100vh;
-  background-image: url('../src/assets/background/city.jpg');
+ height: 100%;
+
+ max-width: 100vw;
+ width: 100%;
+  /* background-image: url('../src/assets/background/city.jpg'); */
+
+  background-color: #1a1a1a;
+  
   
 
   

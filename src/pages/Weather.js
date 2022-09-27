@@ -6,13 +6,6 @@ import NextDaysForecast from '../components/NextDaysForecast';
 
 /*  TO-DO
 
-Traduzir os tipos de clima
-Adicionar ícones para cada clima
-Fazer com que a propriedade src das imagens mude de acordo com o weather code
-
-ADicionar opção para trocar para Fahrenheit
-
-
 
 NextDaysForecast: centralizar o min-max até onde der sem atrapalhar o WeatherCode
 
@@ -58,17 +51,7 @@ const Weather = () => {
     })
   }
 
-  const OPTIONS_FOR_LOCATION_QUERY = {
-    method: 'GET',
-    url: 'http://localhost:8000/location',
-    params: {
-      lat: LATITUDE,
-      lng: LONGITUDE,
-    }
-  }
-
-  
-
+ 
 
   const fetchApi = async () => {
 
@@ -89,7 +72,8 @@ const Weather = () => {
     setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
     setNextDaysMinTemps(result.data.daily.temperature_2m_min);
 
-    axios.request(OPTIONS_FOR_LOCATION_QUERY);
+   
+    
     
 
 
@@ -103,10 +87,31 @@ const Weather = () => {
 
   
 
-
+// pegando latitude, longitude
   useEffect(() => {
     fetchApi()
   }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
+
+
+  //pegando a localização exata
+
+  useEffect( ()=>{
+    
+  const OPTIONS_FOR_LOCATION_QUERY = {
+    method: 'GET',
+    url: 'http://localhost:8000/location',
+    
+  }
+
+
+
+  axios.request(OPTIONS_FOR_LOCATION_QUERY)
+  .then((response)=>{
+    setExactLocation(response.data)
+  })
+  .catch((error)=>console.log(error))
+
+  },[LATITUDE,LONGITUDE])
 
 
 

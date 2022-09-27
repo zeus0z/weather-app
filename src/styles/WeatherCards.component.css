@@ -10,6 +10,7 @@
     top: 4rem;
     margin: 0 1rem 3rem 1rem;
     box-shadow: 5px 5px 10px 1px var(--darker);
+    max-width: 700px;
 }
 
 .next_days_cards {
@@ -25,6 +26,8 @@
     margin: 1rem 1rem;
     box-shadow: 5px 5px 10px 1px var(--darker);
     height: 2rem;
+    width: 80%;
+    max-width: 700px;
 
 
 }
