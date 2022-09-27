@@ -3,16 +3,6 @@ import axios from 'axios';
 import CurrentDayWeather from '../components/CurrentDayWeather';
 import NextDaysForecast from '../components/NextDaysForecast';
 
-
-/*  TO-DO
-
-
-NextDaysForecast: centralizar o min-max até onde der sem atrapalhar o WeatherCode
-
-
-*/
-
-
 const Weather = () => {
 
   const [IS_LOADING, setLoading] = useState(true);
@@ -47,13 +37,12 @@ const Weather = () => {
 
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
-      console.log("LOCALIZAÇÃO OBTIDA");
+      console.log("COORDENADAS OBTIDAS");
     })
   }
 
  
-
-  const fetchApi = async () => {
+  const getWeatherForecast = async () => {
 
     await getLatitudeAndLongitude();
 
@@ -89,7 +78,7 @@ const Weather = () => {
 
 // pegando latitude, longitude
   useEffect(() => {
-    fetchApi()
+    getWeatherForecast()
   }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
 
 
