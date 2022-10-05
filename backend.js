@@ -23,7 +23,7 @@ app.get('/location', (req, res) => {
         })
         .catch(error => console.log(error))
 
-        console.log('Latitude :'+lat+' e Longitude: '+lng)
+        
   
 })
 

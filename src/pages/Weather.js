@@ -41,7 +41,7 @@ const Weather = () => {
     })
   }
 
- 
+
   const getWeatherForecast = async () => {
 
     await getLatitudeAndLongitude();
@@ -61,22 +61,14 @@ const Weather = () => {
     setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
     setNextDaysMinTemps(result.data.daily.temperature_2m_min);
 
-   
-    
-    
-
-
     setLoading(false);
-
 
     console.log("Use Effect Realizado");
   }
 
 
 
-  
-
-// pegando latitude, longitude
+  // pegando latitude, longitude
   useEffect(() => {
     getWeatherForecast()
   }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
@@ -84,33 +76,33 @@ const Weather = () => {
 
   //pegando a localização exata
 
-  useEffect( ()=>{
-    
-  const OPTIONS_FOR_LOCATION_QUERY = {
-    method: 'GET',
-    url: 'http://localhost:8000/location',
-    params: {
-      lat: LATITUDE,
-      lng: LONGITUDE
+  useEffect(() => {
+
+    const OPTIONS_FOR_LOCATION_QUERY = {
+      method: 'GET',
+      url: 'http://localhost:8000/location',
+      params: {
+        lat: LATITUDE,
+        lng: LONGITUDE
+      }
+
     }
-    
-  }
 
 
 
-  axios.request(OPTIONS_FOR_LOCATION_QUERY)
-  .then((response)=>{
-    setExactLocation(response.data)
-  })
-  .catch((error)=>console.log(error))
+    axios.request(OPTIONS_FOR_LOCATION_QUERY)
+      .then((response) => {
+        setExactLocation(response.data)
+      })
+      .catch((error) => console.log(error))
 
-  },[LATITUDE,LONGITUDE])
+  }, [LATITUDE, LONGITUDE])
 
 
 
 
   if (IS_LOADING) {
-    return <div className='loading'>LOADING teste...</div>
+    return <div className='loading'>LOADING...</div>
   } else
 
     return (

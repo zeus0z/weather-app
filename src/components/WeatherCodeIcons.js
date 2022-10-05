@@ -22,15 +22,15 @@ import { faCloudShowersWater } from '@fortawesome/free-solid-svg-icons'
 const WeatherCodeIcons = ({ code, iconSize }) => {
 
     //Assigning Icons to constants
-const cloud = <FontAwesomeIcon icon={faCloud} size={iconSize} />;
-const bolt = <FontAwesomeIcon icon={faCloudBolt} size={iconSize} />;
-const sun = <FontAwesomeIcon icon={faSun} size={iconSize} />;
-const smog = <FontAwesomeIcon icon={faSmog} size={iconSize} />;
-const cloudRain = <FontAwesomeIcon icon={faCloudRain} size={iconSize} />;
-const rain = <FontAwesomeIcon icon={faCloudShowersHeavy} size={iconSize} />;
-const cloudSun = <FontAwesomeIcon icon={faCloudSun} size={iconSize} />;
-const snow = <FontAwesomeIcon icon={faSnowflake} size={iconSize} />;
-const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
+    const cloud = <FontAwesomeIcon icon={faCloud} size={iconSize} />;
+    const bolt = <FontAwesomeIcon icon={faCloudBolt} size={iconSize} />;
+    const sun = <FontAwesomeIcon icon={faSun} size={iconSize} />;
+    const smog = <FontAwesomeIcon icon={faSmog} size={iconSize} />;
+    const cloudRain = <FontAwesomeIcon icon={faCloudRain} size={iconSize} />;
+    const rain = <FontAwesomeIcon icon={faCloudShowersHeavy} size={iconSize} />;
+    const cloudSun = <FontAwesomeIcon icon={faCloudSun} size={iconSize} />;
+    const snow = <FontAwesomeIcon icon={faSnowflake} size={iconSize} />;
+    const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
 
 
     switch (code) {
@@ -39,6 +39,8 @@ const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
             break;
 
         case 1:
+            return sun;
+            break;
         case 2:
 
             return cloudSun;
@@ -58,7 +60,7 @@ const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
         case 56:
         case 57:
 
-          
+
             return cloudRain
             break;
 
@@ -67,7 +69,7 @@ const showers = <FontAwesomeIcon icon={faCloudShowersWater} size={iconSize} />;
         case 65:
         case 66:
         case 67:
-      
+
             return rain;
             break;
 
