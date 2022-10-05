@@ -7,29 +7,26 @@
     padding: 1rem;
     border-radius: 0.4rem;
     position: relative;
-    top: 4rem;
-    margin: 0 1rem 3rem 1rem;
+    top: 2rem;
+    margin: 0 1rem 1rem 1rem;
     box-shadow: 5px 5px 10px 1px var(--darker);
     max-width: 700px;
 }
 
 .next_days_cards {
     display: flex;
-
     align-items: center;
     background-color: var(--light);
     color: var(--darker);
     padding: 1rem;
     border-radius: 0.4rem;
     position: relative;
-    top: 4rem;
-    margin: 1rem 1rem;
+    top: 2rem;
+    margin: 0.5rem 0.5rem;
     box-shadow: 5px 5px 10px 1px var(--darker);
     height: 2rem;
     width: 80%;
     max-width: 700px;
-
-
 }
 
 .weather_condition {
@@ -38,43 +35,24 @@
     font-weight: bold;
     align-items: center;
     height: 50%;
-
-
-
-
 }
-
 
 .next_days_weather_condition {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
     flex-grow: 1;
-
-
-
-
-
-
 }
-
 
 .next_days_cards img {
     width: 20px;
-
 }
 
 .next_days_cards .temps {
     display: flex;
     flex-direction: row;
-
-
     justify-content: space-between;
-
     font-weight: bolder;
-
-
 }
 
 .next_days_cards .date {
@@ -83,9 +61,7 @@
     align-items: flex-start;
     align-content: center;
     margin-right: 2rem;
-
     font-weight: bold;
-
 }
 
 .next_days_cards .date {
@@ -94,31 +70,21 @@
     align-items: flex-start;
     align-content: center;
     margin-right: 2rem;
-
     font-weight: bold;
-
 }
 
 .next_days_cards .min_temp {
     margin-right: 1rem;
 }
 
-
-
-
-
 .monthDay {
     color: var(--dark)
 }
-
-
 
 .card_body {
     display: flex;
     justify-content: space-between;
 }
-
-
 
 .current_day_card img {
 

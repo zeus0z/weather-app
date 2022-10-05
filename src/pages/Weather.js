@@ -18,6 +18,10 @@ const Weather = () => {
   const [NEXT_DAYS_WEATHER_CODES, setNextDaysWeatherCodes] = useState();
   const [NEXT_DAYS_MAX_TEMPS, setNextDaysMaxTemps] = useState();
   const [NEXT_DAYS_MIN_TEMPS, setNextDaysMinTemps] = useState();
+  const [CITY, setCity] = useState('Cidade,');
+  const [CITY_STATE, setCityState] = useState('Estado,');
+  const [COUNTRY, setCountry] = useState('País');
+
 
   const date = new Date();
   const WEEK_DAY_NUMBER = date.getDay();
@@ -31,12 +35,15 @@ const Weather = () => {
   ];
 
   const getLatitudeAndLongitude = () => {
+
     navigator.geolocation.getCurrentPosition((position) => {
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
+
       console.log("COORDENADAS OBTIDAS");
     })
   }
+
 
 
   const getWeatherForecast = async () => {
@@ -55,23 +62,16 @@ const Weather = () => {
     setNextDaysWeatherCodes(result.data.daily.weathercode);
     setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
     setNextDaysMinTemps(result.data.daily.temperature_2m_min);
+    
 
     setLoading(false);
 
     console.log("Use Effect Realizado");
   }
 
+  const getLocationName = async () => {
 
-
-  // pegando latitude, longitude
-  useEffect(() => {
-    getWeatherForecast()
-  }, [LATITUDE, LONGITUDE])
-
-
-  //pegando a localização exata
-
-  useEffect(() => {
+    await getLatitudeAndLongitude();
 
     const OPTIONS_FOR_LOCATION_QUERY = {
       method: 'GET',
@@ -84,14 +84,22 @@ const Weather = () => {
     }
 
 
-
     axios.request(OPTIONS_FOR_LOCATION_QUERY)
       .then((response) => {
-        setExactLocation(response.data)
+        setExactLocation(response.data.results[0].formatted_address)
       })
       .catch((error) => console.log(error))
 
-  }, [LATITUDE, LONGITUDE])
+  }
+
+
+
+
+  useEffect(() => { getWeatherForecast() }, [LATITUDE, LONGITUDE])
+  useEffect(() => { getLocationName(); }, [LATITUDE, LONGITUDE])
+
+
+
 
 
 
