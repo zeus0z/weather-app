@@ -3,18 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
-
 const app = express();
-
 app.use(cors());
-/* método + caminho + callback com pedido e resposta
-
-app.get('/', (req,res)=>{
-    res.json('Olá Mundo')
-} )
-
-*/
-
 
 
 app.get('/location', (req, res) => {
@@ -33,9 +23,8 @@ app.get('/location', (req, res) => {
         })
         .catch(error => console.log(error))
 
-        
-
-
+        console.log('Latitude :'+lat+' e Longitude: '+lng)
+  
 })
 
 
