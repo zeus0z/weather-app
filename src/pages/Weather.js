@@ -10,7 +10,6 @@ const Weather = () => {
   const [LATITUDE, setLatitude] = useState();
   const [EXACT_LOCATION, setExactLocation] = useState('Impossível obter localização');
   const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
-  const [TEMPERATURE_UNIT, setTemperatureUnit] = useState('celsius');
   const [CURRENT_TEMPERATURE, setCurrentTemp] = useState();
   const [CURRENT_MAX_TEMP, setCurrentMaxTemp] = useState();
   const [CURRENT_MIN_TEMP, setCurrentMinTemp] = useState();
@@ -33,8 +32,6 @@ const Weather = () => {
 
   const getLatitudeAndLongitude = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-
-
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
       console.log("COORDENADAS OBTIDAS");
@@ -46,9 +43,7 @@ const Weather = () => {
 
     await getLatitudeAndLongitude();
 
-    //let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=${TEMPERATURE_UNIT}&timezone=America%2FSao_Paulo`
-    // URL provida pelo site, sem meus template literals:
-    let URL = 'https://api.open-meteo.com/v1/forecast?latitude=-14.89&longitude=-40.85&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo';
+    let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo`
     const result = await axios(URL);
 
     setMeteorologicData(result.data);
@@ -71,7 +66,7 @@ const Weather = () => {
   // pegando latitude, longitude
   useEffect(() => {
     getWeatherForecast()
-  }, [LATITUDE, LONGITUDE, TEMPERATURE_UNIT])
+  }, [LATITUDE, LONGITUDE])
 
 
   //pegando a localização exata
