@@ -1,5 +1,4 @@
 import { useState } from "react"
-import "../styles/WeatherCards.component.css"
 import WeatherCodeParse from "./WeatherCodeParse"
 import WeatherCodeIcons from "./WeatherCodeIcons"
 

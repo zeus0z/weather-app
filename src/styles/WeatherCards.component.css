@@ -1,4 +1,5 @@
 .current_day_card {
+    flex: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,7 +19,7 @@
     align-items: center;
     background-color: var(--light);
     color: var(--darker);
-    padding: 1rem;
+    padding: 1.7rem;
     border-radius: 0.4rem;
     position: relative;
     top: 2rem;

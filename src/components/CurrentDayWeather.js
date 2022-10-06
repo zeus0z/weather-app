@@ -1,5 +1,4 @@
 import React from 'react'
-import "../styles/WeatherCards.component.css"
 import WeatherCodeIcons from './WeatherCodeIcons';
 import WeatherCodeParse from './WeatherCodeParse'
 
