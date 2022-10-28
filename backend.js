@@ -7,8 +7,41 @@ const app = express();
 app.use(cors());
 
 
-app.get('/teste', (req,res)=>{
+app.get('/teste', (req, res) => {
     res.send('<h1> Server funcionando normalmente </h1>')
+})
+
+app.get('/weather', (req, res) => {
+
+    //let lat = req.body.lat;
+    //let lng = req.body.lng;
+    let url = 'https://api.open-meteo.com/v1/forecast';
+
+
+
+    axios.get(url, {
+
+        params: {
+            latitude: '-14.87',
+            longitude: '-40.81',
+            daily: ['weathercode','temperature_2m_max','temperature_2m_min','windspeed_10m_max'],
+            timezone: 'auto',
+            current_weather:'true',
+            temperature_unit:'celsius'
+
+        }
+    })
+        .then((response) => {
+            let data = response.data;
+            res.send(data);
+
+        })
+        .catch(error => console.log(error))
+
+
+
+
+
 })
 
 app.get('/location', (req, res) => {
