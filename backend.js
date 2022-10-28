@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 
 
+app.get('/teste', (req,res)=>{
+    res.send('<h1> Server funcionando normalmente </h1>')
+})
+
 app.get('/location', (req, res) => {
 
     const lat = req.query.lat;
