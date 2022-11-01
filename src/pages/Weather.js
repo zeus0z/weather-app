@@ -106,22 +106,6 @@ const Weather = () => {
   }
 
 
-  const doStuff = async () => {
-    await getLatitudeAndLongitude();
-    await getWeatherForecast();
-    await getLocationName();
-  }
-
-  useEffect(() => { doStuff() }, [])
-
-  // useEffect(() => { getWeatherForecast() }, [])
-  // useEffect(() => { getLocationName(); }, [])
-
-
-
-
-
-
 
   if (IS_LOADING) {
     return <div className='loading'>LOADING...</div>
