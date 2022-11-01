@@ -18,9 +18,7 @@ const Weather = () => {
   const [NEXT_DAYS_WEATHER_CODES, setNextDaysWeatherCodes] = useState();
   const [NEXT_DAYS_MAX_TEMPS, setNextDaysMaxTemps] = useState();
   const [NEXT_DAYS_MIN_TEMPS, setNextDaysMinTemps] = useState();
-  const [CITY, setCity] = useState('Cidade,');
-  const [CITY_STATE, setCityState] = useState('Estado,');
-  const [COUNTRY, setCountry] = useState('País');
+
 
 
   const date = new Date();
@@ -34,57 +32,18 @@ const Weather = () => {
     (WEEK_DAY_NUMBER + 6)
   ];
 
-  const getLatitudeAndLongitude = () => {
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude((position.coords.latitude).toFixed(1));
-      setLongitude((position.coords.longitude).toFixed(1));
-
-      console.log("COORDENADAS OBTIDAS");
-    })
-  }
+  const getLocationName = () => {
 
 
 
-  const getWeatherForecast = async () => {
+    let requestUrl = 'http://localhost:8000/location';
 
-    await getLatitudeAndLongitude();
-
-    let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo`
-    const result = await axios(URL);
-
-    setMeteorologicData(result.data);
-    setCurrentTemp(result.data.current_weather.temperature);
-    setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
-    setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
-    setCurrentWeatherCode(result.data.current_weather.weathercode);
-    setNextDays(result.data.daily.time.slice(1));
-    setNextDaysWeatherCodes(result.data.daily.weathercode);
-    setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
-    setNextDaysMinTemps(result.data.daily.temperature_2m_min);
-    
-
-    setLoading(false);
-
-    console.log("Use Effect Realizado");
-  }
-
-  const getLocationName = async () => {
-
-    await getLatitudeAndLongitude();
-
-    const OPTIONS_FOR_LOCATION_QUERY = {
-      method: 'GET',
-      url: 'http://localhost:8000/location',
-      params: {
+    axios.get(requestUrl, {
+      body: {
         lat: LATITUDE,
         lng: LONGITUDE
       }
-
-    }
-
-
-    axios.request(OPTIONS_FOR_LOCATION_QUERY)
+    })
       .then((response) => {
         setExactLocation(response.data.results[0].formatted_address)
       })
@@ -93,10 +52,70 @@ const Weather = () => {
   }
 
 
+  const getWeatherForecast = () => {
+
+    let requestUrl = 'http://localhost:8000/weather';
+
+    axios.get(requestUrl, {
+      body: {
+        lat: LATITUDE,
+        lng: LONGITUDE
+      }
+    })
+      .then((result) => {
+
+        setMeteorologicData(result.data);
+        setCurrentTemp(result.data.current_weather.temperature);
+        setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
+        setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
+        setCurrentWeatherCode(result.data.current_weather.weathercode);
+        setNextDays(result.data.daily.time.slice(1));
+        setNextDaysWeatherCodes(result.data.daily.weathercode);
+        setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
+        setNextDaysMinTemps(result.data.daily.temperature_2m_min);
+
+        console.log('Clima obtido')
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err)
+        console.log('Não foi possível obter a informação meteorológica')
+      })
 
 
-  useEffect(() => { getWeatherForecast() }, [LATITUDE, LONGITUDE])
-  useEffect(() => { getLocationName(); }, [LATITUDE, LONGITUDE])
+
+
+
+  }
+
+  const getLatitudeAndLongitude = () => {
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude((position.coords.latitude).toFixed(2));
+      setLongitude((position.coords.longitude).toFixed(2));
+
+      console.log("Latitude " + LATITUDE + " e Longitude " + LONGITUDE);
+
+    }, (error) => {
+      alert(`ERROR ${error.code}:
+      ${error.message}`)
+
+    })
+
+
+  }
+
+
+  const doStuff = async () => {
+    await getLatitudeAndLongitude();
+    await getWeatherForecast();
+    await getLocationName();
+  }
+
+  useEffect(() => { doStuff() }, [])
+
+  // useEffect(() => { getWeatherForecast() }, [])
+  // useEffect(() => { getLocationName(); }, [])
 
 
 
@@ -109,6 +128,7 @@ const Weather = () => {
   } else
 
     return (
+
       <>
         <CurrentDayWeather
           location={EXACT_LOCATION}
