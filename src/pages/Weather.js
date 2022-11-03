@@ -75,7 +75,7 @@ const Weather = () => {
 
     const OPTIONS_FOR_LOCATION_QUERY = {
       method: 'GET',
-      url: 'http://localhost:8000/location',
+      url: '/location',
       params: {
         lat: LATITUDE,
         lng: LONGITUDE
