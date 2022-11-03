@@ -6,12 +6,7 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 
-
-app.get('/teste', (req,res)=>{
-    res.send('<h1> Server funcionando normalmente </h1>')
-})
-
-app.get('/location', (req, res) => {
+app.get('/location', express.json(),(req, res) => {
 
     const lat = req.query.lat;
     const lng = req.query.lng;
@@ -26,8 +21,6 @@ app.get('/location', (req, res) => {
 
         })
         .catch(error => console.log(error))
-
-
 
 })
 

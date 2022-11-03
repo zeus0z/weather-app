@@ -68,7 +68,7 @@ const WeatherCodeParse = ({ code }) => {
         case 95:
         case 96:
         case 99:
-            return ('Tempestade de raios');
+            return ('Trovoadas');
             break;
 
         default:
