@@ -86,8 +86,9 @@ const Weather = () => {
 
     axios.request(OPTIONS_FOR_LOCATION_QUERY)
       .then((response) => {
-        //setExactLocation(response.data.results[0].formatted_address)
-        setExactLocation(response.data.formatted_address)
+            
+        console.log(response.data)
+        
       })
       .catch((error) => console.log(error))
 
