@@ -75,7 +75,7 @@ const Weather = () => {
 
     const OPTIONS_FOR_LOCATION_QUERY = {
       method: 'GET',
-      url: '/location',
+      url: '/.netlify/functions/location-get',
       params: {
         lat: LATITUDE,
         lng: LONGITUDE
@@ -86,7 +86,8 @@ const Weather = () => {
 
     axios.request(OPTIONS_FOR_LOCATION_QUERY)
       .then((response) => {
-        setExactLocation(response.data.results[0].formatted_address)
+        //setExactLocation(response.data.results[0].formatted_address)
+        setExactLocation(response.data.formatted_address)
       })
       .catch((error) => console.log(error))
 
