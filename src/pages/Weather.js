@@ -77,8 +77,8 @@ const Weather = () => {
       method: 'GET',
       url: '/.netlify/functions/location-get',
       params: {
-        lat: LATITUDE,
-        lng: LONGITUDE
+        latitude: LATITUDE,
+        longitude: LONGITUDE
       }
 
     }
