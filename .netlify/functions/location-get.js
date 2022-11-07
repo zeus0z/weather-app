@@ -15,7 +15,8 @@ exports.handler = async (event, context) => {
         return {
             statusCode: 200,
           
-            // body: JSON.stringify(response.data.results[0].formatted_address)
+            //body: JSON.stringify(response.data.results[0].formatted_address)
+            body: JSON.stringify(await response.data)
         }
     } catch (error) {
         return {
