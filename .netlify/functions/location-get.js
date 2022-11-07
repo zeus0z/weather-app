@@ -14,14 +14,14 @@ exports.handler = async (event, context) => {
         const response = await axios.get(URL);
         return {
             statusCode: 200,
-          
-            //body: JSON.stringify(response.data.results[0].formatted_address)
-            body: JSON.stringify(await response.data)
+
+            body: JSON.stringify(await response.data.results[0].formatted_address)
+            //    body: JSON.stringify(params)
         }
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify(error)
+            body: error
 
         }
     }

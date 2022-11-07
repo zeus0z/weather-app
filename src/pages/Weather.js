@@ -23,6 +23,7 @@ const Weather = () => {
   const [COUNTRY, setCountry] = useState('País');
 
 
+  // Dá pra criar um custom hook pra isso aqui
   const date = new Date();
   const WEEK_DAY_NUMBER = date.getDay();
   const NEXT_DAYS_NUMBERS = [
@@ -34,13 +35,14 @@ const Weather = () => {
     (WEEK_DAY_NUMBER + 6)
   ];
 
+  // Acho que pra esse aqui também ficaria bacana
   const getLatitudeAndLongitude = () => {
 
     navigator.geolocation.getCurrentPosition((position) => {
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
 
-      console.log("COORDENADAS OBTIDAS");
+      console.log(`Latitude: ${LATITUDE} e Longitude ${LONGITUDE}`);
     })
   }
 
@@ -51,6 +53,8 @@ const Weather = () => {
     await getLatitudeAndLongitude();
 
     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo`
+    
+    try{
     const result = await axios(URL);
 
     setMeteorologicData(result.data);
@@ -66,31 +70,39 @@ const Weather = () => {
 
     setLoading(false);
 
-    console.log("Use Effect Realizado");
+    console.log("Weather Obtained Sucessfully");
+    }
+    catch (error) {
+      console.log(`Couldn't get weather data: ${error.message}`)
+    }
   }
 
   const getLocationName = async () => {
 
     await getLatitudeAndLongitude();
 
+    
     const OPTIONS_FOR_LOCATION_QUERY = {
-      method: 'GET',
+      method:'GET',
       url: '/.netlify/functions/location-get',
-      params: {
+      body: {
         latitude: LATITUDE,
         longitude: LONGITUDE
       }
 
     }
 
-
-    axios.request(OPTIONS_FOR_LOCATION_QUERY)
+    if(LATITUDE && LONGITUDE){
+    await axios(OPTIONS_FOR_LOCATION_QUERY)
       .then((response) => {
             
-        console.log(response.data)
+        setExactLocation(response.data)
         
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log('Axios Error: '+error.message))
+    } else {
+      console.log('Não tem latitude pra mandar ')
+    }
 
   }
 
