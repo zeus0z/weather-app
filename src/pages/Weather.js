@@ -3,6 +3,7 @@ import axios from 'axios';
 import CurrentDayWeather from '../components/CurrentDayWeather';
 import NextDaysForecast from '../components/NextDaysForecast';
 
+
 const Weather = () => {
 
   const [IS_LOADING, setLoading] = useState(true);
@@ -78,34 +79,28 @@ const Weather = () => {
     }
   }
 
+
   const getLocationName = async () => {
 
-
-    const OPTIONS_FOR_LOCATION_QUERY = {
-      method: 'GET',
-      url: '/.netlify/functions/location-get',
-      body: {
-        latitude: LATITUDE,
-        longitude: LONGITUDE
-      }
-
-    }
+    
+    const API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LATITUDE},${LONGITUDE}&result_type=administrative_area_level_2|administrative_area_level_1&key=${API_KEY}`
 
 
-    await axios(OPTIONS_FOR_LOCATION_QUERY)
-      .then((response) => {
+      await axios(url)
+        .then((response) => {
 
-        setExactLocation(response.data)
+          setExactLocation(response.data.results[0].formatted_address)
 
-      })
-      .catch((error) => {
-        console.log('Axios Error: ' + error.message)
-        setExactLocation('Não foi possível obter a localização')
-      })
+        })
+        .catch((error) => {
+          console.log('Axios Error: ' + error.message)
+          setExactLocation('Não foi possível obter a localização')
+        })
 
   }
 
-  
+
 
 
   /*-------------------------useEffect------------------------ */
@@ -116,11 +111,11 @@ const Weather = () => {
   useEffect(() => { getWeatherForecast() }, [hasCoordinates])
   useEffect(() => {
 
-    if (LATITUDE && LONGITUDE) {
+    if (hasCoordinates) {
       getLocationName()
     }
-  
-  }, [LATITUDE, LONGITUDE])
+
+  }, [hasCoordinates])
 
 
 
