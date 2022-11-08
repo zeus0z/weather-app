@@ -8,7 +8,8 @@ const Weather = () => {
   const [IS_LOADING, setLoading] = useState(true);
   const [LONGITUDE, setLongitude] = useState();
   const [LATITUDE, setLatitude] = useState();
-  const [EXACT_LOCATION, setExactLocation] = useState('Impossível obter localização');
+  const [hasCoordinates, setHasCoordinates] = useState(false);
+  const [EXACT_LOCATION, setExactLocation] = useState('Carregando Localização...');
   const [METEOROLOGIC_DATA, setMeteorologicData] = useState();
   const [CURRENT_TEMPERATURE, setCurrentTemp] = useState();
   const [CURRENT_MAX_TEMP, setCurrentMaxTemp] = useState();
@@ -41,36 +42,36 @@ const Weather = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLatitude((position.coords.latitude).toFixed(1));
       setLongitude((position.coords.longitude).toFixed(1));
+      setHasCoordinates(true);
 
-      console.log(`Latitude: ${LATITUDE} e Longitude ${LONGITUDE}`);
+      console.log("Coordinates (Lat and Lng) obtained sucessfully!")
+
     })
   }
 
-
-
   const getWeatherForecast = async () => {
 
-    await getLatitudeAndLongitude();
+
 
     let URL = `https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&current_weather=true&temperature_unit=celsius&timezone=America%2FSao_Paulo`
-    
-    try{
-    const result = await axios(URL);
 
-    setMeteorologicData(result.data);
-    setCurrentTemp(result.data.current_weather.temperature);
-    setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
-    setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
-    setCurrentWeatherCode(result.data.current_weather.weathercode);
-    setNextDays(result.data.daily.time.slice(1));
-    setNextDaysWeatherCodes(result.data.daily.weathercode);
-    setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
-    setNextDaysMinTemps(result.data.daily.temperature_2m_min);
-    
+    try {
+      const result = await axios(URL);
 
-    setLoading(false);
+      setMeteorologicData(result.data);
+      setCurrentTemp(result.data.current_weather.temperature);
+      setCurrentMaxTemp(result.data.daily.temperature_2m_max[0]);
+      setCurrentMinTemp(result.data.daily.temperature_2m_min[0]);
+      setCurrentWeatherCode(result.data.current_weather.weathercode);
+      setNextDays(result.data.daily.time.slice(1));
+      setNextDaysWeatherCodes(result.data.daily.weathercode);
+      setNextDaysMaxTemps(result.data.daily.temperature_2m_max);
+      setNextDaysMinTemps(result.data.daily.temperature_2m_min);
 
-    console.log("Weather Obtained Sucessfully");
+
+      setLoading(false);
+
+      console.log("Weather Obtained Sucessfully");
     }
     catch (error) {
       console.log(`Couldn't get weather data: ${error.message}`)
@@ -79,11 +80,9 @@ const Weather = () => {
 
   const getLocationName = async () => {
 
-    await getLatitudeAndLongitude();
 
-    
     const OPTIONS_FOR_LOCATION_QUERY = {
-      method:'GET',
+      method: 'GET',
       url: '/.netlify/functions/location-get',
       body: {
         latitude: LATITUDE,
@@ -92,31 +91,42 @@ const Weather = () => {
 
     }
 
-    if(LATITUDE && LONGITUDE){
+
     await axios(OPTIONS_FOR_LOCATION_QUERY)
       .then((response) => {
-            
+
         setExactLocation(response.data)
-        
+
       })
-      .catch((error) => console.log('Axios Error: '+error.message))
-    } else {
-      console.log('Não tem latitude pra mandar ')
-    }
+      .catch((error) => {
+        console.log('Axios Error: ' + error.message)
+        setExactLocation('Não foi possível obter a localização')
+      })
 
   }
 
+  
+
+
+  /*-------------------------useEffect------------------------ */
 
 
 
-  useEffect(() => { getWeatherForecast() }, [LATITUDE, LONGITUDE])
-  useEffect(() => { getLocationName(); }, [LATITUDE, LONGITUDE])
+  useEffect(() => { getLatitudeAndLongitude() }, [])
+  useEffect(() => { getWeatherForecast() }, [hasCoordinates])
+  useEffect(() => {
+
+    if (LATITUDE && LONGITUDE) {
+      getLocationName()
+    }
+  
+  }, [LATITUDE, LONGITUDE])
 
 
 
 
 
-
+  /*-------------------------RENDER------------------------ */
 
   if (IS_LOADING) {
     return <div className='loading'>LOADING...</div>
