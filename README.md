@@ -1,16 +1,29 @@
 # Weather App 
 
-## Fullscreen 
-<img src="./src/weather_app_fullscreen.png" width="70%">
 
-## Mobile
-<img src="./src/weather_app_mobile.png" width="30%">
+### Preview (Desktop and Mobile)
 
+<div style="float:left">
+<img style="display:inline-block" width=60% src="./src/weather_app_fullscreen.png" width="70%">
+<img  style="display:inline-block" width=30% src="./src/weather_app_mobile.png" width="30%">
+</div>
 
 
 ## Project Description
 
 Gets the current location from the user, and based on that provides the weather for the current day, with max and min temperatures, current day of the month and week, with an icon that changes according to the weather type. Also shows all those features for all days on the current week!
+
+## How to Use
+
+You just need to acess this link and enable location on your browser when the page requests it for the first time!
+
+[My Weather App](https://climazeus.netlify.app)
+
+
+
+
+
+
 
 
 ## Technologies Used
