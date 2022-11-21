@@ -171,3 +171,39 @@ body {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+/*SPECIFIC DAY CLICKED CARD*/
+
+#clicked_day{
+  
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+  height: 90vh;
+  width: 80vw;
+  max-width: 25rem;
+  color: #0d0d0d;
+  background-color: var(--light);
+  
+}
+
+#clicked_day .weather_condition{
+  height: auto;
+}
+
+#specific_data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#temp_and_weather_code{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 2rem;
+
+}

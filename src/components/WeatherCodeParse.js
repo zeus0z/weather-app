@@ -10,7 +10,7 @@ const WeatherCodeParse = ({ code }) => {
             break;
 
         case 1:
-            return ('Predominantemente Limpo')
+            return (`Predominantemente Limpo`)
             break;
         case 2:
             return ('Parcialmente Nublado')
