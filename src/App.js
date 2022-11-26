@@ -6,7 +6,7 @@ import Weather from './pages/Weather';
 function App() {
   return (
     <div className="App">
-      <ClickedDay/>
+      <Weather/>
     </div>
   );
 }
