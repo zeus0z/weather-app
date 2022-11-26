@@ -1,5 +1,4 @@
 import './App.css';
-import WeatherCodeIcons from './components/WeatherCodeIcons';
 import ClickedDay from './pages/ClickedDay';
 import Weather from './pages/Weather';
 

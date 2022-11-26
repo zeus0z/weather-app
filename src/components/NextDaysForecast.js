@@ -1,4 +1,3 @@
-import { useState } from "react"
 import WeatherCodeParse from "./WeatherCodeParse"
 import WeatherCodeIcons from "./WeatherCodeIcons"
 
@@ -6,9 +5,7 @@ import WeatherCodeIcons from "./WeatherCodeIcons"
 const NextDaysForecast = ({ weekDayNumber, day, weatherCode, min, max }) => {
 
     const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado","Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-   
-
-    
+       
     
     return (
         <>

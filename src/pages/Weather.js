@@ -25,7 +25,6 @@ const Weather = () => {
   const [COUNTRY, setCountry] = useState('País');
 
 
-  // Dá pra criar um custom hook pra isso aqui
   const date = new Date();
   const WEEK_DAY_NUMBER = date.getDay();
   const NEXT_DAYS_NUMBERS = [
@@ -37,7 +36,7 @@ const Weather = () => {
     (WEEK_DAY_NUMBER + 6)
   ];
 
-  // Acho que pra esse aqui também ficaria bacana
+
   const getLatitudeAndLongitude = () => {
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -101,9 +100,7 @@ const Weather = () => {
   }
 
 
-
-
-  /*-------------------------useEffect------------------------ */
+  /*-------------------------useEffects------------------------ */
 
 
 

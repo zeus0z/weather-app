@@ -1,3 +1,8 @@
+
+/******************************************************/
+/*                    WORK IN PROGRESS                */
+/******************************************************/
+
 import WeatherCodeIcons from "../components/WeatherCodeIcons"
 import WeatherCodeParse from "../components/WeatherCodeParse"
 

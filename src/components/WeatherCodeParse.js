@@ -1,8 +1,5 @@
 
-
 const WeatherCodeParse = ({ code }) => {
-
-
 
     switch (code) {
         case 0:
