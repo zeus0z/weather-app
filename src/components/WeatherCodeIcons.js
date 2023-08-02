@@ -15,10 +15,6 @@ import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
 import { faCloudShowersWater } from '@fortawesome/free-solid-svg-icons'
 
 
-
-
-
-
 const WeatherCodeIcons = ({ code, iconSize }) => {
 
     //Assigning Icons to constants
