@@ -1,8 +1,5 @@
-import React from 'react'
 import WeatherCodeIcons from './WeatherCodeIcons';
 import WeatherCodeParse from './WeatherCodeParse'
-
-
 
 
 const CurrentDayWeather = ({weekDayNumber, location, temp, max, min, weatherCode }) => {
@@ -14,11 +11,7 @@ const CurrentDayWeather = ({weekDayNumber, location, temp, max, min, weatherCode
     let a = date.getFullYear();
 
     const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado","Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-
-
-    
-
-
+ 
     return (
         <div className="current_day_card">
 
